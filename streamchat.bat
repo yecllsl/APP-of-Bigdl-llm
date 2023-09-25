@@ -1,0 +1,1 @@
+python .\streamchat.py -x chatglm -m D:\yecll\githubCode\my-bigdl-llm-test\checkpoint\ggml-chatglm2-6b-q4_0.bin
