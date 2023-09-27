@@ -17,12 +17,12 @@ Some applications based on BIGDL-LLM tried because I only had Intel devices
 
 - Windows 10/11, 有无WSL均可
 
-## 2.2 设置 Python 环境
+##  设置 Python 环境
 
 接下来，使用 Python 环境管理工具（推荐使用 [Conda](https://docs.conda.io/projects/conda/en/stable/) ）创建 Python 环境并安装必要的库。
 
 
-### 2.2.1 安装 Conda
+###  安装 Conda
 请按照下面与您的操作系统相对应的说明进行操作。
 
 
@@ -60,7 +60,7 @@ conda activate llm-tutorial
 pip install --pre --upgrade bigdl-llm[all]
 ```
 
-## 安装 Jupyter 服务
+## 安装 Jupyter 服务（可选）
 
 ###  安装 Jupyter
 运行教程提供的 Notebook (即 `.ipynb` 文件) 需要 `jupyter` 库。在激活的 Python 3.9 环境下运行：
@@ -76,11 +76,11 @@ pip install jupyter
 ```
 jupyter notebook
 ```
-## 2.5 关于使用LLM的一些你可能想要了解的事项
+##  关于使用LLM的一些你可能想要了解的事项
 
 如果您在LLM和LLM应用程序开发方面是新手，本节可能包含了一些您想要了解的内容。
 
-### 2.5.1 去哪里找模型
+### 去哪里找模型
 
 首先，您需要获取一个模型。社区中有许多开源的LLM可供选择。如果您没有特定的目标，可以考虑从社区公开的LLM排行榜上排名较高的模型中选择。这些公开的LLM排行榜一般采用多种评测手段评估和比较多个LLM的能力。一些比较有名的排行榜包括：
 
@@ -90,7 +90,7 @@ jupyter notebook
 这些排行榜大多包含了列出的模型的参考链接。如果一个模型是开源的，您可以直接从提供的链接中轻松下载并尝试使用。
 
 
-### 2.5.2 从Huggingface下载模型
+###  从Huggingface下载模型
 
 截止到目前为止，许多热门的LLM模型都托管在Huggingface上。Huggingface托管的一个示例模型主页如下所示。
 ![image](https://github.com/shane-huang/bigdl-llm-tutorial/assets/1995599/a04df95f-5590-4bf1-968c-32cf494ece92)
