@@ -1,9 +1,9 @@
-
+#针对ChatGLM2的ggml模型的推理方法，直接读取转化后的.bin模型进行推理
 from bigdl.llm.ggml.model.chatglm.chatglm import ChatGLM    
-from bigdl.llm.transformers import BigdlNativeForCausalLM
+#from bigdl.llm.transformers import BigdlNativeForCausalLM
 
 model_name = "chatglm2-6b"
-model_all_local_path = "D:\\yecll\\githubCode\\my-bigdl-llm-test\\checkpoint\\"
+model_all_local_path = "D:\\data\\chatglm2-6b-native-int4\\"
 
 prompt = "制定一份健身计划"
 if model_name == "chatglm2-6b":

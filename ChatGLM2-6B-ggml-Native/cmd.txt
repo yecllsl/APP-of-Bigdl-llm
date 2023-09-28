@@ -1,0 +1,9 @@
+
+###通过CLI命令，把chatglm2-6b fp16转换成ggml-native-int4模型的命令
+llm-convert "d:\\data\\chatglm2-6b\\" --model-format pth --model-family "chatglm" --outfile "d:\\data\\chatglm2-6b-native-int4\\"
+
+###通过CLI推理chatglm2-6b模型的命令
+llm-cli -t 20 -x chatglm -m 'D:\yecll\githubCode\my-bigdl-llm-test\checkpoint\ggml-chatglm2-6b-q4_0.bin' -p 'Once upon a time, there existed a little girl who liked to have adventures. She wanted to go to places and meet new people, and have fun' --no-mmap -v -n 32
+
+###执行 native-int4-pipeline.py 完成前面两个命令达成的效果
+ python .\native-int4-pipeline.py --model-family chatglm --repo-id-or-model-path "D:\data\chatglm2-6b" --thread-num 2

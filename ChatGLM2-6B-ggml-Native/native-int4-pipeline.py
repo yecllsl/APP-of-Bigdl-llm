@@ -79,6 +79,11 @@ def inference(llm, repo_id_or_model_path, model_family, prompt):
         if model_family == 'llama':
             from transformers import LlamaTokenizer
             tokenizer = LlamaTokenizer.from_pretrained(repo_id_or_model_path)
+        elif model_family == 'chatglm':
+            from tokenization_chatglm import ChatGLMTokenizer
+            tokenizer = ChatGLMTokenizer.from_pretrained(repo_id_or_model_path)
+            #from transformers import AutoTokenizer
+            #tokenizer = AutoTokenizer.from_pretrained(repo_id_or_model_path)
         else:
             from transformers import AutoTokenizer
             tokenizer = AutoTokenizer.from_pretrained(repo_id_or_model_path)
@@ -127,10 +132,11 @@ def main():
         args.model_family = 'llama'
 
     # Step 1: convert original model to BigDL llm model
-    bigdl_llm_path = convert(repo_id_or_model_path=repo_id_or_model_path,
+    """ bigdl_llm_path = convert(repo_id_or_model_path=repo_id_or_model_path,
                              model_family=args.model_family,
-                             tmp_path=args.tmp_path)
-    
+                             tmp_path=args.tmp_path) """
+    #print(bigdl_llm_path)
+    bigdl_llm_path = "D:\\data\\chatglm2-6b-native-int4\\ggml-chatglm2-6b-q4_0.bin"
     # Step 2: load int4 model
     llm = load(model_path=bigdl_llm_path,
                model_family=args.model_family,
