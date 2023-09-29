@@ -18,7 +18,7 @@ import torch
 import time
 import argparse
 import numpy as np
-
+from bigdl.llm.transformers import AutoModelForCausalLM
 from bigdl.llm.transformers import AutoModel
 from transformers import AutoTokenizer
 
@@ -39,17 +39,22 @@ if __name__ == '__main__':
 
     # Load model in 4 bit,
     # which convert the relevant layers in the model into INT4 format
-    model = AutoModel.from_pretrained(model_path,
-                                      load_in_4bit=True,
-                                      trust_remote_code=True)
+    # model = AutoModel.from_pretrained(model_path,
+    #                                   load_in_4bit=True,
+    #                                   trust_remote_code=True)
 
-    # Load tokenizer
+    # # Load tokenizer
+    # tokenizer = AutoTokenizer.from_pretrained(model_path,
+    #                                           trust_remote_code=True)
+    
+    model = AutoModelForCausalLM.load_low_bit(model_path, 
+                                          trust_remote_code=True)
     tokenizer = AutoTokenizer.from_pretrained(model_path,
-                                              trust_remote_code=True)
+                                          trust_remote_code=True)
 
     with torch.inference_mode():
         if disable_stream:
-            # Chat
+            # Chat 
             response, history = model.chat(tokenizer, args.question, history=[])
             print('-'*20, 'Chat Output', '-'*20)
             print(response)

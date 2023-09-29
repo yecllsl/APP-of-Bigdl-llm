@@ -10,7 +10,11 @@ llm-cli -t 20 -x chatglm -m 'D:\yecll\githubCode\my-bigdl-llm-test\checkpoint\gg
 
 
 #### 4、用langchain api streamchat模式推理chatglm2-6b模型
- python .\streamchat.py -x chatglm -m D:\data\chatglm2-6b-native-int4\ggml-chatglm2-6b-q4_0.bin -q '你了解红酒吗？'
+ python .\streamchat.py -x chatglm -m D:\data\chatglm2-6b-native-int4\ggml-chatglm2-6b-q4_0.bin -q '你了解红酒吗？' -t 8
 
 #### 5、用langchain api 模式推理chatglm2-6b模型，添加doc加入矢量数据库的功能
 python .\docqa.py -x chatglm -m D:\data\chatglm2-6b-native-int4\ggml-chatglm2-6b-q4_0.bin -q '你了解BigDL吗？' -t 8   
+
+python .\streamchat.py --repo-id-or-model-path "D:\data\chatglm2-6b"  --question "晚上睡不着应该怎么办"
+
+python .\streamchat_low_bit.py --repo-id-or-model-path "D:\data\chatglm2-6b-bigdl-llm-INT4"  --question "晚上睡不着应该怎么办"
