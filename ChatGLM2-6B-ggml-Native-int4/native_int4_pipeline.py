@@ -25,7 +25,7 @@ def convert(repo_id_or_model_path, model_family, tmp_path):
     original_llm_path = repo_id_or_model_path
     bigdl_llm_path = llm_convert(
         model=original_llm_path,
-        outfile='./',
+        outfile='D:\\data\\chatglm2-6b-native-int4',
         outtype='int4',
         tmp_path=tmp_path,
         model_family=model_family)
