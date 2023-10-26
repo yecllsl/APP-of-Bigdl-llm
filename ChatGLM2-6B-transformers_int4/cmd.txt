@@ -1,0 +1,5 @@
+#### 流模式运行HF-transformer model
+python .\streamchat.py --repo-id-or-model-path "D:\data\chatglm2-6b"  --question "晚上睡不着应该怎么办"
+
+#### 流模式运行HF-transformer model with INT4
+python .\streamchat_low_bit.py --repo-id-or-model-path "D:\data\chatglm2-6b-bigdl-llm-INT4"  --question "晚上睡不着应该怎么办"

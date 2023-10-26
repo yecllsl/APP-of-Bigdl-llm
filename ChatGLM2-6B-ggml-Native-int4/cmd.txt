@@ -5,16 +5,16 @@ llm-convert "d:\\data\\chatglm2-6b\\" --model-format pth --model-family "chatglm
 #### 2、通过CLI推理chatglm2-6b模型的命令
 llm-cli -t 20 -x chatglm -m 'D:\yecll\githubCode\my-bigdl-llm-test\checkpoint\ggml-chatglm2-6b-q4_0.bin' -p 'Once upon a time, there existed a little girl who liked to have adventures. She wanted to go to places and meet new people, and have fun' --no-mmap -v -n 32
 
-#### 3、执行 native-int4-pipeline.py 完成前面两个命令达成的效果，先转化后加载、推理，为了节省时间，加载推理可以直接用转化好的模型，但还需要fp16模型文件夹下的Tokenizer信息，fp16参数还是必要的。
- python .\native-int4-pipeline.py --model-family chatglm --repo-id-or-model-path "D:\data\chatglm2-6b" --thread-num 2
+#### 3、执行 native-int4-pipeline.py 完成前面两个命令达成的效果，先读取fp16模型，转化native-int4后加载、推理.。
+ python .\native_int4_pipeline.py --model-family chatglm --repo-id-or-model-path "D:\data\chatglm2-6b" --thread-num 2
 
 
-#### 4、用langchain api streamchat模式推理chatglm2-6b模型
+#### 4、执行 native-int4-pipeline.py 直接加载、推理native-int4，推理可以直接用转化好的模型，但还需要fp16模型文件夹下的Tokenizer信息，fp16参数还是必要的。
+ python .\native-int4-pipeline-cl.py --model-family chatglm --repo-id-or-model-path "D:\data\chatglm2-6b" --thread-num 2
+
+
+#### 5、用langchain api streamchat模式推理chatglm2-6b模型
  python .\streamchat.py -x chatglm -m D:\data\chatglm2-6b-native-int4\ggml-chatglm2-6b-q4_0.bin -q '你了解红酒吗？' -t 8
 
-#### 5、用langchain api 模式推理chatglm2-6b模型，添加doc加入矢量数据库的功能
+#### 6、用langchain api 模式推理chatglm2-6b模型，添加doc加入矢量数据库的功能
 python .\docqa.py -x chatglm -m D:\data\chatglm2-6b-native-int4\ggml-chatglm2-6b-q4_0.bin -q '你了解BigDL吗？' -t 8   
-
-python .\streamchat.py --repo-id-or-model-path "D:\data\chatglm2-6b"  --question "晚上睡不着应该怎么办"
-
-python .\streamchat_low_bit.py --repo-id-or-model-path "D:\data\chatglm2-6b-bigdl-llm-INT4"  --question "晚上睡不着应该怎么办"
